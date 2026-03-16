@@ -1,29 +1,14 @@
-import IconArcade from '../assets/images/icon-arcade.svg';
-import IconAdvaced from '../assets/images/icon-advanced.svg';
-import IconPro from '../assets/images/icon-pro.svg';
-
-const plans = [
-  {
-    id: 'p1',
-    name: 'Arcade',
-    bill_amt: '$9/mo',
-    icon: IconArcade,
-  },
-  {
-    id: 'p2',
-    name: 'Advanced',
-    bill_amt: '$12/mo',
-    icon: IconAdvaced,
-  },
-  {
-    id: 'p3',
-    name: 'Pro',
-    bill_amt: '$15/mo',
-    icon: IconPro,
-  }
-];
+import { Link } from 'react-router-dom';
+import { useContext } from 'react';
+import FormContent from '../context/FormContent';
+import { plans } from '../data/data';
 
 function SelectPlans() {
+  const ctx = useContext(FormContent);
+  const { toggleDuration, formData, handlePlans } = ctx;
+  const isYearly = formData.duration === 'yearly';
+  const selectedPlan = formData.plan.name;
+
   return (
     <>
       <article className="heading">
@@ -33,23 +18,27 @@ function SelectPlans() {
 
       <article className="middle-content">
         <div className="plan-cards">
-          {plans.map((plan, index) => (
-            <label key={plan.id} htmlFor={plan.name.replaceAll(' ', '-').toLowerCase()} className="plan-card">
-              <input type="radio" name="select-plan" id={plan.name.replaceAll(' ', '-').toLowerCase()} checked={index === 0 ? 'checked' : ''} />
-              <div className="icon">
-                <img src={plan.icon} alt={plan.name} />
-              </div>
-              <div className="plan-details">
-                <h3 className="title">{plan.name}</h3>
-                <p className="price">{plan.bill_amt}</p>
-              </div>
-            </label>
-          ))}
+          {plans.map((plan) => {
+            const planID = plan.name.replaceAll(' ', '-').toLowerCase();
+            return (
+              <label key={plan.id} htmlFor={planID} className="plan-card">
+                <input type="radio" value={plan.name} name="select-plan" id={planID} checked={selectedPlan === plan.name} onChange={() => handlePlans(plan)} />
+                <div className="icon">
+                  <img src={plan.icon} alt={plan.name} />
+                </div>
+                <div className="plan-details">
+                  <h3 className="title">{plan.name}</h3>
+                  <p className="price">{isYearly ? `$${plan.bill_amt * 10}/yr` : `$${plan.bill_amt}/mo`}</p>
+                  {isYearly && <p className='text-primary'><small>2 months free</small></p>}
+                </div>
+              </label>
+            );
+          })}
         </div>
         <div className="plan-selector-wrapper">
           <span>Monthly</span>
           <label className="plan-selector">
-            <input type="checkbox" />
+            <input type="checkbox" name='duration' onChange={toggleDuration} defaultChecked={isYearly} />
             <span className="slider"></span>
           </label>
           <span>Yearly</span>
@@ -57,8 +46,8 @@ function SelectPlans() {
       </article>
 
       <article className="action">
-        <button className='btn'>Go Back</button>
-        <button className='btn btn-primary'>Next Step</button>
+        <Link to={-1} className='btn'>Go Back</Link>
+        <Link to='/add-ons' className='btn btn-primary'>Next Step</Link>
       </article>
     </>
   );

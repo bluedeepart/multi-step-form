@@ -1,4 +1,17 @@
+import { Link } from 'react-router-dom';
+import FormContent from '../context/FormContent';
+import { useContext } from 'react';
+
 function Summary() {
+  const ctx = useContext(FormContent);
+  const { formData } = ctx;
+  const isYearly = formData.duration === 'yearly';
+  const dur = isYearly ? 'yr' : 'mo';
+  const totalBillAmt = isYearly ? formData.plan.bill_amt * 10 : formData.plan.bill_amt;
+  const totalPrice = formData.addOns.reduce((accumulator, currentValue) => {
+    return accumulator + (isYearly ? currentValue.price * 10 : currentValue.price);
+  }, totalBillAmt);
+
   return (
     <>
       <article className="heading">
@@ -10,37 +23,35 @@ function Summary() {
         <div className="summary-card">
           <div className="summary-card-header">
             <div>
-              <h3>Arcade (Monthly)</h3>
-              <button className='btn btn-secondary-hover'>Change</button>
+              <h3>{formData.plan.name} ({isYearly ? 'Yearly' : 'Monthly'})</h3>
+              <Link to='/select-plan' className='btn btn-secondary-hover'>Change</Link>
             </div>
-            <h3>$9/mo</h3>
+            <h3>${totalBillAmt}/{dur}</h3>
           </div>
           <div className="summary-card-body">
             <ul>
-              <li>
-                <p>Online services</p>
-                <span>+$1/mo</span>
-              </li>
-              <li>
-                <p>Larger storage</p>
-                <span>+$2/mo</span>
-              </li>
+              {formData.addOns.map((addOn) => (
+                <li key={addOn.id}>
+                  <p>{addOn.title}</p>
+                  <span>+${isYearly ? addOn.price * 10 : addOn.price}/{dur}</span>
+                </li>
+              ))}
             </ul>
           </div>
         </div>
         <div className="summary-card-footer">
           <ul>
             <li>
-              <p>Total (per month)</p>
-              <strong>+$12/mo</strong>
+              <p>Total (per {isYearly ? 'year' : 'month'})</p>
+              <strong>+${totalPrice}/{dur}</strong>
             </li>
           </ul>
         </div>
       </article>
 
       <article className="action">
-        <button className='btn'>Go Back</button>
-        <button className='btn btn-secondary'>Confirm</button>
+        <Link to={-1} className='btn'>Go Back</Link>
+        <Link to='/thankyou' className='btn btn-secondary'>Confirm</Link>
       </article>
     </>
   );

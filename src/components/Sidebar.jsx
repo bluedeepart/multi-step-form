@@ -1,6 +1,9 @@
 import { useEffect, useState } from 'react';
 import SidebarImage from '../assets/images/bg-sidebar-desktop.svg';
 import SidebarMobImage from '../assets/images/bg-sidebar-mobile.svg';
+import { NavLink } from 'react-router-dom';
+
+const sidebarItems = ['Your Info', 'Select Plan', 'Add-ons', 'Summary'];
 
 function Sidebar() {
   const [isMobile, setIsMobile] = useState(window.innerWidth < 768);
@@ -22,14 +25,23 @@ function Sidebar() {
   const backgroundImage = isMobile ? SidebarMobImage : SidebarImage;
 
   return (
-    <div className='sidebar' style={{ backgroundImage: `url("${backgroundImage}")` }}>
-      <ul className='stepper-list'>
-        <li className='active'>Your Info</li>
-        <li>Select Plan</li>
-        <li>Add-ons</li>
-        <li>Summary</li>
-      </ul>
-    </div>
+    <aside className='sidebar' style={{ backgroundImage: `url("${backgroundImage}")` }}>
+      <nav>
+        <ul className='stepper-list'>
+          {sidebarItems.map((item, index) => {
+            const itemId = item.toLowerCase().replaceAll(' ', '-');
+            return (
+              <li key={itemId}>
+                <NavLink
+                  to={index === 0 ? '/' : itemId}
+                  className={({ isActive }) => isActive ? 'active' : ''}
+                >{item}</NavLink>
+              </li>
+            );
+          })}
+        </ul>
+      </nav>
+    </aside>
   );
 }
 

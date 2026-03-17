@@ -7,7 +7,7 @@ function ErrorPage() {
         <h2>404-Page not found!</h2>
         <p>This page is not the page you're looking for.</p>
         <br /><br />
-        <p><Link to="/" className='btn btn-secondary'>Back to Home</Link></p>
+        <p><Link to="/multi-step-form/" className='btn btn-secondary'>Back to Home</Link></p>
       </section>
     </main>
   );

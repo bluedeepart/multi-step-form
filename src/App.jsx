@@ -11,7 +11,7 @@ import { FormContentProvider } from './context/FormContent';
 
 const router = createBrowserRouter([
   {
-    path: '/',
+    path: '/multi-step-form/',
     Component: Layout,
     errorElement: <ErrorPage />,
     children: [

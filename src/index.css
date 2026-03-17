@@ -122,7 +122,8 @@ main {
 
 /* Attribution */
 .attribution {
-  font-size: 11px;
+  margin-top: 1rem;
+  font-size: 12px;
   text-align: center;
 }
 

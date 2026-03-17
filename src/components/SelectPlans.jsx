@@ -47,7 +47,7 @@ function SelectPlans() {
 
       <article className="action">
         <Link to={-1} className='btn'>Go Back</Link>
-        <Link to='/add-ons' className='btn btn-primary'>Next Step</Link>
+        <Link to='/multi-step-form/add-ons' className='btn btn-primary'>Next Step</Link>
       </article>
     </>
   );

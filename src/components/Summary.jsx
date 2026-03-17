@@ -51,7 +51,7 @@ function Summary() {
 
       <article className="action">
         <Link to={-1} className='btn'>Go Back</Link>
-        <Link to='/thankyou' className='btn btn-secondary'>Confirm</Link>
+        <Link to='/multi-step-form/thankyou' className='btn btn-secondary'>Confirm</Link>
       </article>
     </>
   );

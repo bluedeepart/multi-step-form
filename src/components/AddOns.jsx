@@ -39,7 +39,7 @@ function AddOns() {
 
       <article className="action">
         <Link to={-1} className='btn'>Go Back</Link>
-        <Link to='/summary' className='btn btn-primary'>Next Step</Link>
+        <Link to='/multi-step-form/summary' className='btn btn-primary'>Next Step</Link>
       </article>
     </>
   );

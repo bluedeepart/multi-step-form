@@ -35,5 +35,5 @@ export async function personalInfoAction({ request }) {
     return { errors };
   }
 
-  return redirect('/select-plan');
+  return redirect('/multi-step-form/select-plan');
 }

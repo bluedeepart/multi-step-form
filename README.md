@@ -30,7 +30,7 @@ Users should be able to:
 
 ### Screenshot
 
-![Multi-step form solution](./src/assets/screeenshot.png)
+![Multi-step form solution](./src/assets/images/screenshot.png)
 
 ### Links
 

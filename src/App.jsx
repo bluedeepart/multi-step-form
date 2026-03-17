@@ -1,4 +1,4 @@
-import { createBrowserRouter, RouterProvider } from 'react-router-dom';
+import { createBrowserRouter, HashRouter } from 'react-router-dom';
 import Layout from './components/Layout';
 import PersonalInfo from './components/PersonalInfo';
 import SelectPlans from './components/SelectPlans';
@@ -27,7 +27,7 @@ const router = createBrowserRouter([
 function App() {
   return (
     <FormContentProvider>
-      <RouterProvider router={router} />
+      <HashRouter router={router} />
     </FormContentProvider>
   );
 }

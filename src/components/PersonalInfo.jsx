@@ -53,13 +53,14 @@ function PersonalInfo() {
               value={formData.name}
               onChange={(event) => updateForm(event.target.name, event.target.value)}
               className={errors?.name ? 'invalid-input' : ''}
+              required
             />
             {errors?.name && <span className='error-msg'>{errors?.name}</span>}
           </div>
           <div className='input-group'>
             <label htmlFor='email'>Email Address</label>
             <input
-              type='text'
+              type='email'
               id='email'
               name='email'
               onBlur={handleBlur}
@@ -67,13 +68,14 @@ function PersonalInfo() {
               value={formData.email}
               onChange={(event) => updateForm(event.target.name, event.target.value)}
               className={errors?.email ? 'invalid-input' : ''}
+              required
             />
             {errors?.email && <span className='error-msg'>{errors?.email}</span>}
           </div>
           <div className='input-group'>
             <label htmlFor='phone'>Phone Number</label>
             <input
-              type='number'
+              type='tel'
               id='phone'
               name='phone'
               onBlur={handleBlur}
@@ -81,6 +83,7 @@ function PersonalInfo() {
               value={formData.phone}
               onChange={(event) => updateForm(event.target.name, event.target.value)}
               className={errors?.phone ? 'invalid-input' : ''}
+              required
             />
             {errors?.phone && <span className='error-msg'>{errors?.phone}</span>}
           </div>

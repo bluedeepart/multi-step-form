@@ -120,6 +120,18 @@ main {
   color: var(--primary-color);
 }
 
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
 /* Attribution */
 .attribution {
   margin-top: 1rem;
@@ -129,11 +141,7 @@ main {
 
 .attribution a {
   color: var(--primary-color);
-  text-decoration: none;
-
-  &:hover {
-    text-decoration: underline;
-  }
+  text-decoration: underline;
 }
 
 /* error page */

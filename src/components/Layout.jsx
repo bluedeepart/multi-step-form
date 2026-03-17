@@ -7,13 +7,14 @@ function Layout() {
       <main>
         <Sidebar />
         <section className='main-content'>
+          <h1 className='sr-only'>Multi-Step Form</h1>
           <Outlet />
         </section>
       </main>
-      <div class="attribution">
+      <footer class="attribution">
         Challenge by <a href="https://www.frontendmentor.io?ref=challenge" target="_blank" rel="noopener noreferrer">Frontend Mentor</a>.
         Coded by <a href="https://www.deepart.in/" target="_blank" rel="noopener noreferrer">Deepart</a>.
-      </div>
+      </footer>
     </>
   );
 }

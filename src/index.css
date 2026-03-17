@@ -70,7 +70,7 @@
 body {
   font-family: var(--font-regular);
   font-weight: 400;
-  font-size: 16px;
+  font-size: 1rem;
   line-height: 1.5;
   background-color: var(--bg-body);
 }
@@ -178,7 +178,6 @@ input[type="number"] {
     outline: none;
   }
 
-  &:invalid,
   &.invalid-input {
     border-color: var(--error);
     &:focus-visible {
@@ -291,7 +290,6 @@ button {
   text-decoration: none;
   position: relative;
   display: block;
-  pointer-events: none;
 
   &::after {
     content: counter(li);
@@ -328,10 +326,6 @@ button {
   border-radius: 0.5rem;
   padding: 1rem;
   transition: all 0.3s ease-out;
-
-  & > input[type="radio"] {
-    display: none;
-  }
 
   &:hover,
   &:has(> input[type="radio"]:checked) {

@@ -22,7 +22,7 @@ function SelectPlans() {
             const planID = plan.name.replaceAll(' ', '-').toLowerCase();
             return (
               <label key={plan.id} htmlFor={planID} className="plan-card">
-                <input type="radio" value={plan.name} name="select-plan" id={planID} checked={selectedPlan === plan.name} onChange={() => handlePlans(plan)} />
+                <input type="radio" value={plan.name} name="select-plan" id={planID} checked={selectedPlan === plan.name} onChange={() => handlePlans(plan)} className='sr-only' />
                 <div className="icon">
                   <img src={plan.icon} alt={plan.name} />
                 </div>

@@ -19,8 +19,8 @@ export function validateForm(values, validators) {
   const errors = {};
 
   for (const field in validators) {
-    const error = validators[field]?.(values[field]);
-    if (error) errors[field] = error;
+    const fieldError = validators[field]?.(values[field]);
+    if (fieldError) errors[field] = fieldError;
   }
 
   return errors;

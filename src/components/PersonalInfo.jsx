@@ -35,7 +35,7 @@ function PersonalInfo() {
 
   return (
     <>
-      <article className='heading'>
+      <article className='heading' noValidate>
         <h2>Personal info</h2>
         <p>Please provide your name, email address, and phone number.</p>
       </article>

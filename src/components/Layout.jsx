@@ -11,7 +11,7 @@ function Layout() {
           <Outlet />
         </section>
       </main>
-      <footer class="attribution">
+      <footer className="attribution">
         Challenge by <a href="https://www.frontendmentor.io?ref=challenge" target="_blank" rel="noopener noreferrer">Frontend Mentor</a>.
         Coded by <a href="https://www.deepart.in/" target="_blank" rel="noopener noreferrer">Deepart</a>.
       </footer>
